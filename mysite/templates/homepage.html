@@ -1,0 +1,56 @@
+{% extends "banner_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block banner %}
+    <h1>{% trans "Event Ticket" %}</h1>
+    <p>
+        {% blocktrans %}
+            Attending an event is a popular activity of modern society.
+            Some events are commercial, other have limited number of attendees;
+            Event Ticket helps you meet listeners, visitors and friends.
+        {% endblocktrans %}
+    </p>
+    
+    <h2>About Project</h2>
+    <p>
+        {% blocktrans %}
+            This project implements a simple integrated system that helps you to <b>generate</b> tickets for different events.<br />
+            <b>Simple</b> and <b>user-friendly</b> interfaces, lets you buy tickets to desired events, obtaining a <b>QR Code</b> and a unique <b>key</b>.<br />
+            Scanner based on <b>Raspberry Pi</b> and a <b>Web-Cam</b> will <b>decode</b> your ticket and check its validity.
+        {% endblocktrans %}
+    </p>
+    
+    {% if user.is_authenticated %}
+        <p class="what_next">{% blocktrans %}Wondering <a href="/request/" class="btn btn-primary large">What Next</a>?{% endblocktrans %}</p>
+    {% else %}
+        {% url account_login as login_url %}
+        {% url account_signup as signup_url %}
+        <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn">Log In</a> or <a href="{{ signup_url }}" class="btn primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
+    {% endif %}
+{% endblock %}
+
+{% block column-1 %}
+    <h2>QR Code</h2>
+        <p>QR code (abbreviated from <b>Quick Response Code</b>) is the trademark for a type of matrix barcode (or two-dimensional barcode) first designed for the automotive industry in Japan.</p>
+        
+        <p><a class="btn" href="http://en.wikipedia.org/wiki/QR_code">View details &raquo;</a></p>
+{% endblock %}
+
+{% block column-2 %}
+    <h2>Raspberry Pi</h2>
+        <p>The Raspberry Pi is a credit-card-sized <b>single-board computer</b> developed in the UK by the Raspberry Pi Foundation with the intention of promoting the teaching of basic computer science in schools.</p>
+        
+        <p><a class="btn" href="http://en.wikipedia.org/wiki/Raspberry_Pi">View details &raquo;</a></p>
+{% endblock %}
+
+{% block column-3 %}
+    <h2>OpenCV</h2>
+        <p>OpenCV (Open Source <b>Computer Vision</b> Library) is a library of programming functions mainly aimed at real-time computer vision, developed by Intel, and now supported by Willow Garage and Itseez. It is free for use under the open source BSD license.</p>
+
+        <p><a class="btn" href="http://en.wikipedia.org/wiki/Opencv">View details &raquo;</a></p>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% block header %}
+<script type="text/javascript">
+    function generateTicket()
+    {
+        var cinema = document.getElementById("cinema").value;
+        var day = document.getElementById("day").value;
+        var time = document.getElementById("time").value;
+        var movie = document.getElementById("movie").value;
+        var seat = document.getElementById("seat").value;
+
+        document.getElementById("ticket_form").setAttribute("action","/request/api/?params="+cinema+","+day+","+time+","+movie+","+seat)
+
+    }
+</script>
+{% endblock %}
+
+<form id="ticket_form" name="ticket" method="post" onsubmit="return generateTicket();">
+{% csrf_token %}
+    <label>
+        <select id="cinema" name="Cinema" form="ticket_form" required="">
+            <option value="">Cinema</option>
+            <option value="1">Centru</option>
+            <option value="2">Riscani</option>
+            <option value="3">Multiplex</option>
+            <option value="4">Balti</option>
+        </select>
+    </label>
+    <label>
+        <select id="day" name="Day" form="ticket_form" required="">
+            <option value="">Day</option>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+            <option value="7">Sunday</option>
+        </select>
+    </label>
+    <label>
+        <select id="time" name="Time" form="ticket_form" required="">
+            <option value="">Time</option>
+            <option value="1">10:00-12:00</option>
+            <option value="2">12:30-14:30</option>
+            <option value="3">15:00-17:00</option>
+            <option value="4">17:30-19:30</option>
+            <option value="5">20:00-22:00</option>
+        </select>
+    </label>
+    <label>
+        <select id="movie" name="Movie" form="ticket_form" required="">
+            <option value="">Movie</option>
+            <option value="1">Titanic 3D</option>
+            <option value="2">Battleship</option>
+            <option value="3">Intalnire cu surprize</option>
+            <option value="4">Nunta de cosmar</option>
+            <option value="5">Ce inseamna sa fii parinte</option>
+            <option value="6">Umbre intunecate</option>
+        </select>
+    </label>
+    <label>
+        <input id="seat" type="text" name="Seat" form="ticket_form" min="0" max="99" pattern="[0-9]*" value="Seat [0-99]"><br />
+    </label>
+    {% if user.is_authenticated %}
+    <input class="btn btn-primary" type="submit" value="Submit">
+    {% else %}
+        {% url account_login as login_url %}
+        {% url account_signup as signup_url %}
+        <p>You can <a href="{{ login_url }}" class="btn">Log In</a> or <a href="{{ signup_url }}" class="btn primary">Sign Up</a> to try the generator.</p>
+    {% endif %}
+</form>

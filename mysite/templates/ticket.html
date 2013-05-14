@@ -1,0 +1,21 @@
+{% extends "homepage.html" %}
+
+{% load bootstrap_toolkit %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Generator" %}{% endblock %}
+
+{% block body_class %}generator{% endblock %}
+
+{% block banner %}
+    <div align="center">
+	{% if user.is_authenticated %}
+        <img src="{{ ticket }}"/>
+        <h3 align="center">{{ hash }}</h3>
+    </div>
+    <div align="center">
+    {% endif %}
+    {% include "ticket_form.html" %}
+    </div>
+{% endblock %}
