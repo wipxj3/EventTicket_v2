@@ -1,7 +1,29 @@
 {% extends "banner_base.html" %}
 
 {% load i18n %}
-
+{% block nav %}
+    <ul class="nav">
+    <li id="tab_first">
+        <a href="#">Main</a>
+    </li>
+    <li id="tab_second">
+        <a href="/request/">Generator</a>
+    </li>
+    <li id="tab_third">
+        <a href="/request/check/">Checker</a>
+    </li>
+    <li id="tab_fourth" class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Some Dropdown Menu
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Some Link</a></li>
+            <li><a href="#">Another Link</a></li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
 
 {% block body_class %}home{% endblock %}
