@@ -4,7 +4,7 @@
 {% block nav %}
     <ul class="nav">
     <li id="tab_first">
-        <a href="#">Main</a>
+        <a href="#"></a>
     </li>
     <li id="tab_second">
         <a href="/request/">Generator</a>
@@ -14,12 +14,13 @@
     </li>
     <li id="tab_fourth" class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Some Dropdown Menu
+            Technology
             <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-            <li><a href="#">Some Link</a></li>
-            <li><a href="#">Another Link</a></li>
+            <li><a href="http://en.wikipedia.org/wiki/QR_code">QR Code</a></li>
+            <li><a href="http://en.wikipedia.org/wiki/Raspberry_Pi">Raspberry Pi</a></li>
+            <li><a href="http://en.wikipedia.org/wiki/Opencv">Open CV</a></li>
         </ul>
     </li>
 </ul>
@@ -32,9 +33,9 @@
     <h1>{% trans "Event Ticket" %}</h1>
     <p>
         {% blocktrans %}
-            Attending an event is a popular activity of modern society.
-            Some events are commercial, other have limited number of attendees;
-            Event Ticket helps you meet listeners, visitors and friends.
+            Most events are commercial. Others have a limited number of places. 
+            With Event Ticket you’re just a click away from Movie Sessions, Concerts, Theatre Plays, Conferences and many more.
+            It helps you meet fellow thinkers and be ahead of everyone else.
         {% endblocktrans %}
     </p>
     
@@ -48,7 +49,7 @@
     </p>
     
     {% if user.is_authenticated %}
-        <p class="what_next">{% blocktrans %}Wondering <a href="/request/" class="btn btn-primary large">What Next</a>?{% endblocktrans %}</p>
+        <p class="what_next">{% blocktrans %}Wondering <a href="/request/" class="btn btn-primary large">WHAT NEXT</a> ?{% endblocktrans %}</p>
     {% else %}
         {% url account_login as login_url %}
         {% url account_signup as signup_url %}

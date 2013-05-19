@@ -1,0 +1,4 @@
+.idea/
+.gitignore
+.mysite/static/img/*.png
+..db
