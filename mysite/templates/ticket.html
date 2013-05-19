@@ -9,13 +9,17 @@
 {% block body_class %}generator{% endblock %}
 
 {% block banner %}
-    <div align="center">
-	{% if user.is_authenticated %}
-        <img src="{{ ticket }}"/>
-        <h3 align="center">{{ hash }}</h3>
-    </div>
-    <div align="center">
-    {% endif %}
+	<div id="selector" align="center" style="float: left; height: auto;" >
     {% include "ticket_form.html" %}
+    </div>
+    <div id="results" align="center">
+    	{% if user.is_authenticated %}
+    	<h2> Your ticket: </h2>
+	    <img src="{{ ticket }}" width="180px" alt="Fill the form!"/>
+        <h3 style ="padding-bottom: 100px;">{{ hash }}</h3>
+     	{% else %}
+    	<h2> To obtain a ticket, <br />fill in the form.</h2>
+    	<img src="/site_media/static/tutorial.png" />
+    	{% endif %}
     </div>
 {% endblock %}

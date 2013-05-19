@@ -4,23 +4,20 @@
 {% block nav %}
     <ul class="nav">
     <li id="tab_first">
-        <a href="#"></a>
-    </li>
-    <li id="tab_second">
         <a href="/request/">Generator</a>
     </li>
-    <li id="tab_third">
+    <li id="tab_second">
         <a href="/request/check/">Checker</a>
     </li>
-    <li id="tab_fourth" class="dropdown">
+    <li id="tab_third" class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Technology
             <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-            <li><a href="http://en.wikipedia.org/wiki/QR_code">QR Code</a></li>
-            <li><a href="http://en.wikipedia.org/wiki/Raspberry_Pi">Raspberry Pi</a></li>
-            <li><a href="http://en.wikipedia.org/wiki/Opencv">Open CV</a></li>
+            <li><a href="http://www.qrcode.com/en/about/standards.html" target="_blank">QR Code</a></li>
+            <li><a href="http://www.raspberrypi.org/quick-start-guide" target="_blank">Raspberry Pi</a></li>
+            <li><a href="http://opencv.org/about.html" target="_blank">Open CV</a></li>
         </ul>
     </li>
 </ul>
@@ -30,50 +27,57 @@
 {% block body_class %}home{% endblock %}
 
 {% block banner %}
-    <h1>{% trans "Event Ticket" %}</h1>
+    <div style="height: auto">
     <p>
         {% blocktrans %}
+        <img src="/site_media/static/event_logo.png" width="180px" align="left" style="padding: 0 10px 0 0;">
             Most events are commercial. Others have a limited number of places. 
             With Event Ticket you’re just a click away from Movie Sessions, Concerts, Theatre Plays, Conferences and many more.
             It helps you meet fellow thinkers and be ahead of everyone else.
         {% endblocktrans %}
     </p>
     
-    <h2>About Project</h2>
+    <h3>About Project</h3>
     <p>
         {% blocktrans %}
-            This project implements a simple integrated system that helps you to <b>generate</b> tickets for different events.<br />
-            <b>Simple</b> and <b>user-friendly</b> interfaces, lets you buy tickets to desired events, obtaining a <b>QR Code</b> and a unique <b>key</b>.<br />
-            Scanner based on <b>Raspberry Pi</b> and a <b>Web-Cam</b> will <b>decode</b> your ticket and check its validity.
+            This project implements an integrated system that helps you to <b>generate</b> tickets for different events.<br />
+            <b>Simple</b> and <b>user-friendly</b> interface, lets you buy tickets to desired events, obtaining a <b>QR Code</b> and a unique <b>key</b>.<br />
         {% endblocktrans %}
     </p>
-    
     {% if user.is_authenticated %}
         <p class="what_next">{% blocktrans %}Wondering <a href="/request/" class="btn btn-primary large">WHAT NEXT</a> ?{% endblocktrans %}</p>
     {% else %}
         {% url account_login as login_url %}
         {% url account_signup as signup_url %}
-        <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn">Log In</a> or <a href="{{ signup_url }}" class="btn primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
+        <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn btn-primary">Log In</a> or <a href="{{ signup_url }}" class="btn primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
     {% endif %}
+
+    <b>Powered by:<br /></b>
+            <div style="float: right; padding: 10px;"><img src="/site_media/static/hdr_logo.gif" height="50px" /></div>
+            <div style="float: right; padding: 10px;"><img src="/site_media/static/Twitter_Boostrap.png" width="50px" /></div>
+            <div style="float: right; padding: 10px;"><img src="/site_media/static/qrcode.png" width="50px" /></div>
+            <div style="float: right; padding: 10px;"><img src="/site_media/static/RaspberryPi.png" height="50px" /></div>
+            <div style="float: right; padding: 10px;"><img src="/site_media/static/OpenCV.png" width="50px" /></div><br /><br />
+    </div>
 {% endblock %}
 
 {% block column-1 %}
+    <br />
     <h2>QR Code</h2>
         <p>QR code (abbreviated from <b>Quick Response Code</b>) is the trademark for a type of matrix barcode (or two-dimensional barcode) first designed for the automotive industry in Japan.</p>
-        
-        <p><a class="btn" href="http://en.wikipedia.org/wiki/QR_code">View details &raquo;</a></p>
+        <p><a class="btn" href="http://www.qrcode.com/en/about/standards.html" target="_blank">View details &raquo;</a></p>
 {% endblock %}
 
 {% block column-2 %}
+    <br />
     <h2>Raspberry Pi</h2>
         <p>The Raspberry Pi is a credit-card-sized <b>single-board computer</b> developed in the UK by the Raspberry Pi Foundation with the intention of promoting the teaching of basic computer science in schools.</p>
-        
-        <p><a class="btn" href="http://en.wikipedia.org/wiki/Raspberry_Pi">View details &raquo;</a></p>
+        <p><a class="btn" href="http://www.raspberrypi.org/quick-start-guide" target="_blank">View details &raquo;</a></p>
 {% endblock %}
 
 {% block column-3 %}
+    <br />
     <h2>OpenCV</h2>
         <p>OpenCV (Open Source <b>Computer Vision</b> Library) is a library of programming functions mainly aimed at real-time computer vision, developed by Intel, and now supported by Willow Garage and Itseez. It is free for use under the open source BSD license.</p>
-
-        <p><a class="btn" href="http://en.wikipedia.org/wiki/Opencv">View details &raquo;</a></p>
+        <p><a class="btn" href="http://opencv.org/about.html" target="_blank">View details &raquo;</a></p>
 {% endblock %}

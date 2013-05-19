@@ -12,8 +12,10 @@ def ticket(request):
     shortHash = qrHash[0:7]
     qrEncoder.saveToDB(str(qrImage), str(info), str(qrHash), str(shortHash))
     qrStorage = '/site_media/static/img/'
-    f = qrStorage + qrImage + '.png'
-    ticket = f
+    if qrImage != None:
+        ticket = qrStorage + qrImage + '.png'
+    else:
+        ticket = '/site_media/static/warning.png'
 
     t = loader.get_template('ticket.html')
     c = RequestContext(request, {'ticket': ticket, 'hash': shortHash})

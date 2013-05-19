@@ -8,12 +8,10 @@
         var movie = document.getElementById("movie").value;
         var seat = document.getElementById("seat").value;
 
-        document.getElementById("ticket_form").setAttribute("action","/request/api/?params="+cinema+","+day+","+time+","+movie+","+seat)
-
+        document.getElementById("ticket_form").setAttribute("action","/request/api/?params="+cinema+","+day+","+time+","+movie+","+seat);
     }
 </script>
 {% endblock %}
-
 <form id="ticket_form" name="ticket" method="post" onsubmit="return generateTicket();">
 {% csrf_token %}
     <label>
@@ -59,13 +57,13 @@
         </select>
     </label>
     <label>
-        <input id="seat" type="text" name="Seat" form="ticket_form" min="0" max="99" pattern="[0-9]*" value="Seat [0-99]"><br />
+        <input id="seat" type="text" name="Seat" form="ticket_form" pattern="(^[0-9].?)" placeholder="[0-99]" required=""><br />
     </label>
     {% if user.is_authenticated %}
     <input class="btn btn-primary" type="submit" value="Submit">
     {% else %}
         {% url account_login as login_url %}
         {% url account_signup as signup_url %}
-        <p>You can <a href="{{ login_url }}" class="btn">Log In</a> or <a href="{{ signup_url }}" class="btn primary">Sign Up</a> to try the generator.</p>
+        <p>You can <a href="{{ login_url }}" class="btn btn-primary">Log In</a> or <a href="{{ signup_url }}" class="btn primary">Sign Up</a> to try the generator.</p>
     {% endif %}
 </form>
