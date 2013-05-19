@@ -30,6 +30,7 @@ def check(request):
         error_flag = 0
     elif checkHash == 'INVALID':
         response = 'Not valid ticket'
+        shortHash = 'No hash provided'
         error_flag = 0
     else:
         response = 'Unexpected error!!!'
