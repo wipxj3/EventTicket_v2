@@ -6,3 +6,5 @@ local_settings.py
 .gitignore
 mysite/static/img/*.png
 dev.db
+*.db
+
